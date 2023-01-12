@@ -2,10 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import { InvoiceModel } from "./model/Invoice";
-import * as dotenv from "dotenv";
 const app = express();
 const PORT = 4000;
-dotenv.config();
 app.use(express.json());
 app.use(cors());
 mongoose.set("strictQuery", false);
@@ -47,7 +45,7 @@ app.put("/editInvoice/:id", (req, res) => {
     });
 });
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect("mongodb+srv://olegbobokhidze:TODhKXpihKg3bEVk@cluster0.tsxancm.mongodb.net/?retryWrites=true&w=majority")
   .then(() => {
     console.log(`listening on ${PORT}`);
     app.listen(PORT);

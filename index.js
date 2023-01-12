@@ -1,11 +1,12 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import { InvoiceModel } from "./model/Invoice";
+import { InvoiceModel } from "./model/invoice.js";
 const app = express();
 const PORT = 4000;
 app.use(express.json());
 app.use(cors());
+dotenv.config();
 mongoose.set("strictQuery", false);
 app.get("/invoices", (req, res) => {
   InvoiceModel.find({}, (err, result) => {
@@ -45,7 +46,7 @@ app.put("/editInvoice/:id", (req, res) => {
     });
 });
 mongoose
-  .connect("mongodb+srv://olegbobokhidze:TODhKXpihKg3bEVk@cluster0.tsxancm.mongodb.net/?retryWrites=true&w=majority")
+  .connect(process.env.MONGO_URL)
   .then(() => {
     console.log(`listening on ${PORT}`);
     app.listen(PORT);

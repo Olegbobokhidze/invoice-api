@@ -8,7 +8,6 @@ const PORT = 7000;
 app.use(express.json());
 app.use(cors());
 dotenv.config();
-mongoose.set("strictQuery", false);
 app.get("/invoices", (req, res) => {
   InvoiceModel.find({}, (err, result) => {
     if (err) {

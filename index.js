@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import { InvoiceModel } from "./model/invoice.js";
+import * as dotenv from "dotenv";
 const app = express();
 const PORT = 4000;
 app.use(express.json());
